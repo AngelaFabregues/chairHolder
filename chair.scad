@@ -25,29 +25,60 @@ module chairHolder(hole_diametre, depth) {
     }
 }
 
+module chairHolderThikness(hole_diametre, depth, thickness,extra_long){
+    solid_width=free_width/2;
+    long=solid_width+(hole_diametre/2)+extra_long;
+    translate([0,-depth/2,hole_diametre/2]){
+        cube([long,depth,thickness]);
+    }
+    translate([0,-depth/2,-hole_diametre/2-thickness]){
+        cube([long,depth,thickness]);
+    }
+}
+
+module nail(){
+    translate([-14/2+4,0,0]){
+        rotate([0,90,0]){
+            cylinder(14,7/2,7.8/2,true);
+        }
+    }
+}
+module chairNails(){
+    translate([0,20,0]){
+        nail();
+    }
+    translate([0,-20,0]){
+        nail();
+    }
+}
+
+module supports(thick, hole){
+    depth=70;
+    wide=10-hole;
+    translate([-wide-hole,0,-thick/2]){
+        translate([0,-depth/2,0]){
+            cube([wide,11-hole,thick]);
+        }
+        long=32-(2*hole);
+        translate([0,-long/2,0]){
+            cube([wide,long,thick]);
+        }
+    }
+}
+
+
+extra=1; // maybe 0
+hole_diametre=table_height + extra;
+depth=70;
+chairHolder(hole_diametre, depth);
+chairHolderThikness(hole_diametre, depth, 4, 2);
+chairNails();
+//supports(2,0.5);
+
+
+
 module letter(l,s,h) {
 	linear_extrude(height = h) {
 		text(l, size = s, font = "Veltica", halign = "center", valign = "center", $fn = 16);
 	}
 }
-
-module chairRadiusTest(extra){
-    hole_diametre=table_height + extra;
-    depth=10;
-
-    difference(){
-        chairHolder(hole_diametre, depth);
-        union(){ // id
-            margin=0.5;
-            height=(free_width/2)-(margin*2);
-            translate([height/2+margin,-depth/2+margin,0]){
-                rotate([90,90,0]){
-                    letter(str(extra),height,2);
-                }
-            }
-        }
-    }
-}
-
-// Adapts the holder adding extra to the diameter that is 11.6mm.
-chairRadiusTest(1);
