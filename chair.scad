@@ -66,12 +66,28 @@ module supports(thick, hole){
     }
 }
 
+module roundSurface(){
+    rotate([0,90,0]){
+        translate([0,23.5,0]){
+            cylinder(22,10,10,true);
+        }
+        translate([0,-23.5,0]){
+            cylinder(22,10,10,true);
+        }
+    }
+    cube([22,47,20],true);
+}
+
 
 extra=1; // maybe 0
 hole_diametre=table_height + extra;
 depth=70;
-chairHolder(hole_diametre, depth);
-chairHolderThikness(hole_diametre, depth, 4, 2);
-chairNails();
-//supports(2,0.5);
-
+intersection(){
+    roundSurface();
+    union(){
+        chairHolder(hole_diametre, depth);
+        chairHolderThikness(hole_diametre, depth, 4, 2);
+        chairNails();
+        //supports(2,0.5);
+    }
+}
