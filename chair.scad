@@ -39,7 +39,7 @@ module chairHolderThikness(hole_diametre, depth, thickness,extra_long){
 module nail(){
     translate([-14/2+4,0,0]){
         rotate([0,90,0]){
-            cylinder(14,7/2,7.8/2,true);
+            cylinder(14,7/2,7.6/2,true);
         }
     }
 }
@@ -75,10 +75,3 @@ chairHolderThikness(hole_diametre, depth, 4, 2);
 chairNails();
 //supports(2,0.5);
 
-
-
-module letter(l,s,h) {
-	linear_extrude(height = h) {
-		text(l, size = s, font = "Veltica", halign = "center", valign = "center", $fn = 16);
-	}
-}
