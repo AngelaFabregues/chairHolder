@@ -1,11 +1,11 @@
-thikness=4.6;
-width=22;
-length=86.1;
-hole=7.5;
-holeDistance=51.1;
+thikness=4.5;
+width=20;
+length=85;
+hole=8;
+holeDistance=50;
 empty=1.5;
 
-squareLength=length-width;
+squareLength=length-width-8;
 
 module chair_2nd_part(){
     difference(){
