@@ -79,7 +79,7 @@ module roundSurface(){
 }
 
 
-extra=1; // maybe 0
+extra=0;
 hole_diametre=table_height + extra;
 depth=70;
 intersection(){
