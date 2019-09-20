@@ -1,8 +1,8 @@
 thikness=4.5;
 width=20;
 length=85;
-hole=8;
-holeDistance=62;
+hole=10;
+holeDistance=60;
 empty=1.5;
 
 squareLength=length-width+6;
@@ -32,7 +32,5 @@ module chair_2nd_part(){
         }
     }
 }
-
-
 
 chair_2nd_part();
