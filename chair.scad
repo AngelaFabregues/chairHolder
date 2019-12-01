@@ -1,4 +1,4 @@
-free_width=8;
+free_width=12;
 table_height=11.6;
 
 module chairHolder(hole_diametre, depth) {
@@ -69,13 +69,13 @@ module supports(thick, hole){
 module roundSurface(){
     rotate([0,90,0]){
         translate([0,23.5,0]){
-            cylinder(22,10,10,true);
+            cylinder(24,10,10,true);
         }
         translate([0,-23.5,0]){
-            cylinder(22,10,10,true);
+            cylinder(24,10,10,true);
         }
     }
-    cube([22,47,20],true);
+    cube([24,47,20],true);
 }
 
 
